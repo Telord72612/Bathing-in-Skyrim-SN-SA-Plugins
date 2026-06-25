@@ -41,7 +41,7 @@ each dependency** below.
 
 ## Requirements (hard dependencies)
 
-- ([**Bathing in Skyrim - Renewed**]https://www.nexusmods.com/skyrimspecialedition/mods/135288?tab=description) 
+- **Bathing in Skyrim - Renewed**(https://www.nexusmods.com/skyrimspecialedition/mods/135288?tab=description) 
 - **SeverActions** (with its survival system enabled)
 - **SkyrimNet**
 - **PapyrusUtil** — the build for your game (PapyrusUtil SE for SE/AE, PapyrusUtil VR for VR)
