@@ -95,8 +95,6 @@ Two small SKSE frameworks of mine ship inside the mod:
 - **Standpoint** (`Standpoint.esp`, ESL — costs no load-order slot) — walks an NPC to an exact point
   with exact facing (centimetre / ~1° arrivals), with stuck recovery.
 
-If you already run either as a standalone mod, that's fine — they are the same plugins, not forks;
-let your mod manager pick whichever is newer.
 
 ## Compatibility
 
