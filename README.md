@@ -95,6 +95,8 @@ Two small SKSE frameworks of mine ship inside the mod:
 - **Standpoint** (`Standpoint.esp`, ESL — costs no load-order slot) — walks an NPC to an exact point
   with exact facing (centimetre / ~1° arrivals), with stuck recovery.
 
+If you already run either as a standalone mod, that's fine — they are the same plugins, not forks;
+let your mod manager pick whichever is newer.
 
 ## Compatibility
 
@@ -153,6 +155,72 @@ ESL-flagged and cost no regular load-order slot.
   to tier 2/3.
 - **The player** is tracked by Bathing in Skyrim natively and bathes via its own hotkey/menu. Your
   dirtiness shows in NPC perception, and NPCs can wash your back when asked.
+
+## What's new in V2.5 (SkyrimNet Beta 25 build)
+
+**Use this version only with SkyrimNet 0.25.0 (Beta 25) or newer. On Beta 24 or older, use
+V2.4.1 instead** - the two are otherwise identical in features and behaviour.
+
+Beta 25 replaced loose prompt/action files with a content library, so this build ships its
+SkyrimNet content as a plugin (an "external layer" named `telord.bisr-sn-sa`) instead of loose
+files under `prompts/` and `config/actions/`. After installing, the plugin appears on the
+SkyrimNet dashboard under Plugins with an **External** badge, where you can reorder or disable
+it like any other. Nothing else changed: same actions, same prompt, same Papyrus bridge.
+
+- If you are upgrading from V2.4.1 on Beta 25, **do not run "Import Old Content" for this mod**.
+  Importing copies files into your personal overlay, and an overlay copy outranks the plugin -
+  which would freeze this mod's content at today's version and silently ignore future updates.
+  Uninstall V2.4.1 first, or untick `telord.bisr-sn-sa` in the import dialog.
+
+## What's new in V2.4.1
+
+- **Fixed: false "you washed me" comments.** Telling a follower to wash themselves through
+  Bathing in Skyrim's own dialogue made them thank the *player* for washing them — the bridge
+  guessed that any wash it didn't start, with the player standing at the water, was the player's
+  doing. Attribution is now evidence-based: the bridge listens for Wash Me's actual paired-wash
+  animation on the player, which also tells it the direction (washing vs being washed). A real
+  Wash Me hand-wash is still credited correctly both ways; any other bath just registers as
+  "\<name\> has just washed in the water" and who did it is left to the conversation itself.
+
+## What's new in V2.4
+
+- **SexLab P+ compatibility fix.** The bridge used to stamp the vanilla scratch actor value
+  `Variable05` on tracked followers as an internal marker. SexLab P+ uses that same actor value
+  for its own scene-state checks, and its scene validation refuses any actor with
+  `Variable05 > 0` (error `-16`) — so scenes with tracked followers failed to start. The stamp
+  (and every other scratch-AV write except the dungeon flag the actions read) is removed, and
+  the mod heals affected saves automatically: each tracked follower's leftover values are zeroed
+  once on the first scan after updating. No user action needed; until you update, console
+  `setav Variable05 0` on the follower unblocks scenes.
+
+## What's new in V2.3
+
+- **Anti-obsession fix.** Followers were fixating on bathing because the hygiene block rendered
+  into *every* LLM request — including standing invitations to wash for **clean** followers near
+  water. Now: a clean follower (below ~20% dirt) renders **nothing** about bathing at all (the
+  comfort soak stays available as an action, it's just never advertised), and a dirty follower's
+  hygiene block is **windowed** — visible for about a minute every 10 minutes, reopening
+  immediately whenever their dirt tier actually changes so state updates always land.
+- The periodic "there is water right here" idle thought is **removed entirely**: water and
+  bathing now come up only from the survival window above, or when a character actively does
+  something about it (scouting for water, walking to it, bathing, asking for soap).
+
+## What's new in V2.2
+
+- **Hardening (SE/AE):** saving mid paired-wash could bake disabled player movement into the save
+  (`DisablePlayerControls` persists). The bridge now marks when *it* holds the lock and restores
+  your controls on load if that marker survived a save — without ever touching control locks held
+  by other mods. (Note: a looping *solo* player bath animation is Bathing in Skyrim's own player
+  sequence — `EnablePlayerControls` + `player.sae IdleForceDefaultState` in console unsticks it,
+  and switching the BiS MCM player animation style prevents it.)
+
+## What's new in V2.1
+
+- Bundled **Standpoint updated to 0.7.0** with travel railguards: you can physically stop a
+  walking NPC (block their path, bump them, or grab them in VR); walks cancel when something
+  hostile is on or near the route, or if the errand would carry the walker more than ~50 m from
+  the player. The bridge reacts in character to each of these (a follower stopped on her way to
+  the water tells herself the wash can wait).
 
 ## What's new in V2
 
