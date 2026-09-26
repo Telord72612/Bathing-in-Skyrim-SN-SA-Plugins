@@ -162,7 +162,7 @@ ESL-flagged and cost no regular load-order slot.
 V2.4.1 instead** - the two are otherwise identical in features and behaviour.
 
 Beta 25 replaced loose prompt/action files with a content library, so this build ships its
-SkyrimNet content as a plugin (an "external layer" named `telord.bisr-sn-sa`) instead of loose
+SkyrimNet content as a plugin (an "external layer" named `telord72612.bathing-in-skyrim-renewed-integration-for-skyrimnet`) instead of loose
 files under `prompts/` and `config/actions/`. After installing, the plugin appears on the
 SkyrimNet dashboard under Plugins with an **External** badge, where you can reorder or disable
 it like any other. Nothing else changed: same actions, same prompt, same Papyrus bridge.
@@ -170,7 +170,7 @@ it like any other. Nothing else changed: same actions, same prompt, same Papyrus
 - If you are upgrading from V2.4.1 on Beta 25, **do not run "Import Old Content" for this mod**.
   Importing copies files into your personal overlay, and an overlay copy outranks the plugin -
   which would freeze this mod's content at today's version and silently ignore future updates.
-  Uninstall V2.4.1 first, or untick `telord.bisr-sn-sa` in the import dialog.
+  Uninstall V2.4.1 first, or untick `telord72612.bathing-in-skyrim-renewed-integration-for-skyrimnet` in the import dialog.
 
 ## What's new in V2.4.1
 
