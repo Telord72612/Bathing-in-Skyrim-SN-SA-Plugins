@@ -156,6 +156,22 @@ ESL-flagged and cost no regular load-order slot.
 - **The player** is tracked by Bathing in Skyrim natively and bathes via its own hotkey/menu. Your
   dirtiness shows in NPC perception, and NPCs can wash your back when asked.
 
+## What's new in V2.6
+
+- **Walking to water indoors now works.** The bundled Standpoint is updated from 0.7.0 to
+  1.0.0. The old version checked for hostile NPCs in a way that, inside any building, also
+  counted NPCs from other, unloaded buildings. A follower sent to a bath-house pool had her
+  walk cancelled half a second after it started, and was told something dangerous was in
+  the way. Outdoor walks were not affected.
+- **No more rescue by teleport.** A follower who got stuck on her way to the water could be
+  thrown forward by the old stuck recovery, sometimes through a wall or the floor. She now
+  gives up and says she could not reach the water.
+- **The SkyrimNet plugin id changed** to match the SkyrimNet Hub listing:
+  `telord72612.bathing-in-skyrim-renewed-integration-for-skyrimnet` (it was `telord.bisr-sn-sa`).
+  **When updating from V2.5.0, replace the old version - do not merge.** If your mod manager
+  merged, delete the folder `SKSE/Plugins/SkyrimNet/external/telord.bisr-sn-sa/`.
+- If you also run the standalone Standpoint mod, keep whichever copy is newer.
+
 ## What's new in V2.5 (SkyrimNet Beta 25 build)
 
 **Use this version only with SkyrimNet 0.25.0 (Beta 25) or newer. On Beta 24 or older, use
